@@ -34,20 +34,26 @@ class CoinMarketCap {
 	}
 
 	format_coin(data) {
-		if (!data) return 'This coin is not listed on exchanges we support';
+		if (!data) return false;
 		let price = ( 2.5 * Number(data.price_usd) ).toFixed(3)
 		let reply = `1 CVZT = $${price}`;
 		return reply;
 	}
 
 	format_stats(data) {
-		if (!data) return 'Empty Data';
+		if (!data) return false;
+		
 		let ch_1hr = data.percent_change_1h;
 		let ch_24hr = data.percent_change_24h;
 		let ch_7d = data.percent_change_7d;
 
+		// Add suitable ▲ / ▼ symbol
+		ch_7d = Number(ch_7d) > 0 ? `▲ ${ch_7d}` : `▼ ${ch_7d}`;
+		ch_1hr = Number(ch_1hr) > 0 ? `▲ ${ch_1hr}` : `▼ ${ch_1hr}`;
+		ch_24hr = Number(ch_24hr) > 0 ? `▲ ${ch_24hr}` : `▼ ${ch_24hr}`;
+
 		let reply = "Price movements:\n";
-		reply += `1h ▲ ${ch_1hr} % | 24h ▲ ${ch_24hr} % | 7d ▲ ${ch_7d} %`; // ▼
+		reply += `1h ${ch_1hr} % | 24h ${ch_24hr} % | 7d ${ch_7d} %`;
 		return reply;
 	}
 }
