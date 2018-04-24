@@ -52,5 +52,5 @@ app.listen(port, () => {
     console.log('Server running at port', port);
 });
 
-bot.setWebhook('https://cvzt-bot.herokuapp.com/');
+bot.setWebhook('https://cvzt-bot.herokuapp.com/webhook');
 bot.getWebhookInfo();
