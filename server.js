@@ -52,5 +52,5 @@ app.listen(port, () => {
     console.log('Server running at port', port);
 });
 
-// bot.setWebhook('https://chopmaster.localtunnel.me/webhook');
-// bot.getWebhookInfo();
+bot.setWebhook('https://cvzt-bot.herokuapp.com/');
+bot.getWebhookInfo();
